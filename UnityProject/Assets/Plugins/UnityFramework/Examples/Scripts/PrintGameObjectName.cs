@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityFramework.Attributes;
@@ -25,7 +24,7 @@ namespace UnityFramework.Examples
 
         private void Update()
         {
-            if (this.HasPropertiesWithNullValues(this.ValidatedProperties))
+            if (!this.HasValidProperties(this.ValidatedProperties))
             {
                 Debug.Log("There are properties with null values!");
             }

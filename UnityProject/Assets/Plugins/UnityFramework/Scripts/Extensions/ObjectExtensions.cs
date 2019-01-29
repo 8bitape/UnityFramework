@@ -13,26 +13,26 @@ namespace UnityFramework.Extensions
             var validatedProperties = _object
                 .GetType()
                 .GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(x => HasValidatePropertyIsNotNullAttribute(x))
+                .Where(x => HasValidatePropertyAttribute(x))
                 .ToList();
 
             return validatedProperties;
         }
 
-        public static bool HasPropertiesWithNullValues(this object _object, List<PropertyInfo> validatedProperties)
+        public static bool HasValidProperties(this object _object, List<PropertyInfo> validatedProperties)
         {
             foreach (var property in validatedProperties)
             {
                 if (property.GetValue(_object).ToString() == "null")
                 {
-                    return true;
+                    return false;
                 }
             }
 
-            return false;
+            return true;
         }
 
-        private static bool HasValidatePropertyIsNotNullAttribute(PropertyInfo property)
+        private static bool HasValidatePropertyAttribute(PropertyInfo property)
         {
             var validatePropertyAttribute = Attribute.GetCustomAttribute(property, typeof(ValidatePropertyIsNotNullAttribute));
 
