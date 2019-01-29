@@ -6,7 +6,7 @@ using UnityFramework.Attributes;
 
 namespace UnityFramework.Extensions
 {
-    public static class MonoBehaviourExtensions
+    public static class ObjectExtensions
     {
         public static List<PropertyInfo> GetValidatedProperties(this object _object)
         {
