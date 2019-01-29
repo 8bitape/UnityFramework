@@ -1,2 +1,2 @@
 # UnityFramework
-A useful Unity framework with useful tools and utilities.
+A Unity framework with useful tools and utilities.
