@@ -34,7 +34,7 @@ namespace UnityFramework.Extensions
 
         private static bool HasValidatePropertyIsNotNullAttribute(PropertyInfo property)
         {
-            var validatePropertyAttribute = Attribute.GetCustomAttribute(property, typeof(ValidatePropertyIsNotNull));
+            var validatePropertyAttribute = Attribute.GetCustomAttribute(property, typeof(ValidatePropertyIsNotNullAttribute));
 
             return validatePropertyAttribute != null ? true : false;
         }

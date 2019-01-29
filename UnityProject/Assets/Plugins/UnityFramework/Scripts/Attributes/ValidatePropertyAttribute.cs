@@ -4,7 +4,7 @@ namespace UnityFramework.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
 
-    public class ValidatePropertyIsNotNull : Attribute
+    public class ValidatePropertyIsNotNullAttribute : Attribute
     {
 
     }
