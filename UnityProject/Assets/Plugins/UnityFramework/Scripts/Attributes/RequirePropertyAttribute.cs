@@ -5,7 +5,7 @@ namespace UnityFramework.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
 
-    public class RequirePropertyAttribute : ValidationAttribute
+    public class RequiredPropertyAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {

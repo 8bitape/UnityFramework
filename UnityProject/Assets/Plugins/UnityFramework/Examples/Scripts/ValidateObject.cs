@@ -9,7 +9,7 @@ namespace UnityFramework.Examples
         [SerializeField]
         private GameObject _gameObject = null;
 
-        [RequireProperty]
+        [RequiredProperty]
         private GameObject GameObject { get { return this._gameObject; } }
 
         private void Update()

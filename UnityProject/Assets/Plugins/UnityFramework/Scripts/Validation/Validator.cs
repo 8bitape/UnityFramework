@@ -1,14 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using UnityEngine;
 
 public static class Validator
 {
-    public static bool TryValidateObject(Object _object)
+    private static Dictionary<Type, List<PropertyInfo>> cachedProps = new Dictionary<Type, List<PropertyInfo>>();
+
+    public static bool TryValidateObject(UnityEngine.Object _object)
     {
-        var props = GetPropertiesWithValidationAttributes(_object);
+        if (_object == null)
+        {
+            return false;
+        }
+
+        var props = new List<PropertyInfo>();
+
+        if (cachedProps.ContainsKey(_object.GetType()))
+        {
+            cachedProps.TryGetValue(_object.GetType(), out props);
+        }
+        else
+        {
+            props = GetPropertiesWithValidationAttributes(_object);
+
+            cachedProps.Add(_object.GetType(), props);
+        }            
 
         foreach (var prop in props)
         {
@@ -21,7 +39,7 @@ public static class Validator
         return true;
     }
 
-    private static List<PropertyInfo> GetPropertiesWithValidationAttributes(Object _object)
+    private static List<PropertyInfo> GetPropertiesWithValidationAttributes(UnityEngine.Object _object)
     {
         var props = _object
             .GetType()
