@@ -8,7 +8,7 @@ public static class Validator
 {
     private static Dictionary<Type, List<PropertyInfo>> cachedProps = new Dictionary<Type, List<PropertyInfo>>();
 
-    public static bool TryValidateObject(UnityEngine.Object _object)
+    public static bool TryValidateObject(object _object)
     {
         if (_object == null)
         {
@@ -39,7 +39,7 @@ public static class Validator
         return true;
     }
 
-    private static List<PropertyInfo> GetPropertiesWithValidationAttributes(UnityEngine.Object _object)
+    private static List<PropertyInfo> GetPropertiesWithValidationAttributes(object _object)
     {
         var props = _object
             .GetType()
