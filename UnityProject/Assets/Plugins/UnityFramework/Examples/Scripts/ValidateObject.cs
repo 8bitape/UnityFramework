@@ -7,20 +7,29 @@ namespace UnityFramework.Examples
     public class ValidateObject : MonoBehaviour
     {
         [SerializeField]
-        private GameObject _gameObject = null;
+        private bool _hasGameObject = false;
 
         [RequiredProperty]
-        private GameObject GameObject { get { return this._gameObject; } }
+        private GameObject GameObject { get; set; }
+
+        [SerializeField]
+        private bool _hasSystemObject = false;
+
+        [RequiredProperty]
+        private object SystemObject { get; set; }
+
+        private void OnValidate()
+        {
+            this.GameObject = this._hasGameObject ? this.gameObject : null;
+
+            this.SystemObject = this._hasSystemObject ? new object() : null;
+        }
 
         private void Update()
         {
-            if (!this.IsValidObject())
+            if (this.IsValidObject())
             {
-                Debug.Log("There are properties with null values!");
-            }
-            else
-            {
-                Debug.Log(this.GameObject.name);
+                Debug.Log($"{ this.gameObject.name } has all required properties.");
             }
         }
     }
