@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
+using UnityEngine;
 
 public static class Validator
 {
@@ -32,6 +33,8 @@ public static class Validator
         {
             if (!GetValidationAttribute(prop).IsValid(prop.GetValue(_object)))
             {
+                Debug.LogWarning($"{ prop.Name } property is not valid.");
+
                 return false;
             }
         }

@@ -29,7 +29,7 @@ namespace UnityFramework.Examples
         {
             if (this.IsValidObject())
             {
-                Debug.Log($"{ this.gameObject.name } has all required properties.");
+                Debug.Log($"{ this.gameObject.name } object is valid.");
             }
         }
     }
