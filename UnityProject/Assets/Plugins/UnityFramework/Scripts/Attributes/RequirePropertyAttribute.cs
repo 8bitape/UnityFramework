@@ -9,7 +9,17 @@ namespace UnityFramework.Attributes
     {
         public override bool IsValid(object value)
         {
-            return value.ToString() != "null" ? true : false;
+            if (value == null)
+            {
+                return false;
+            }
+
+            if (value.ToString() == "null")
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
