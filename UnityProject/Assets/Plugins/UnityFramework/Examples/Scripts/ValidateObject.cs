@@ -9,20 +9,28 @@ namespace UnityFramework.Examples
         [SerializeField]
         private bool _hasGameObject = false;
 
-        [RequiredProperty]
-        private GameObject GameObject { get; set; }
-
         [SerializeField]
         private bool _hasSystemObject = false;
 
+        [SerializeField]
+        private bool _hasValidComplexObject = false;
+
+        [RequiredProperty]
+        private GameObject GameObject { get; set; }
+
         [RequiredProperty]
         private object SystemObject { get; set; }
+
+        [RequiredProperty, ValidateObject]
+        private ComplexObject ComplexObject { get; set; }
 
         private void OnValidate()
         {
             this.GameObject = this._hasGameObject ? this.gameObject : null;
 
             this.SystemObject = this._hasSystemObject ? new object() : null;
+
+            this.ComplexObject = this._hasValidComplexObject ? new ComplexObject(this.gameObject) : new ComplexObject();
         }
 
         private void Update()
