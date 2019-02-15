@@ -7,7 +7,7 @@ namespace $rootnamespace$
 {
     public class $safeitemname$ : PubSubMonoBehaviour
     {
-        [RequiredProperty]
+        [RequiredProperty, ValidateObject]
         private Model Model { get; set; }
 
         public void Awake()

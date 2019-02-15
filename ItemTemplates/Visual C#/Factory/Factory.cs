@@ -11,7 +11,7 @@ namespace $rootnamespace$
         [RequiredProperty]
         private Data Data { get; set; }
 
-        [RequiredProperty]
+        [RequiredProperty, ValidateObject]
         private Model Model { get; set; }
 
         private readonly string _dataPath = "Data/$safeitemname$";
@@ -20,14 +20,9 @@ namespace $rootnamespace$
         {
             this.Data = Resources.Load<Data>(this._dataPath);
 
-            if (!this.Data.IsValidObject())
-            {
-                return;
-            }
-
             this.Model = new Model(this.Data);
 
-            if (!this.Model.IsValidObject())
+            if (!this.IsValidObject())
             {
                 return;
             }
