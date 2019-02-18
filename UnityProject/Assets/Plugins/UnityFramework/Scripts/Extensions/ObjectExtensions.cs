@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace UnityFramework.Extensions
+﻿namespace UnityFramework.Extensions
 {
     public static class ObjectExtensions
     {
