@@ -2,53 +2,61 @@
 {
     public static class FloatExtensions
     {
-        public static void Increment(this float value, float step)
+        public static float Increment(this float value, float step)
         {
-            value += step;
+            return value += step;
         }
 
-        public static void Increment(this float value, float step, float maxValue)
+        public static float Increment(this float value, float step, float maxValue)
         {
             if (value < maxValue)
             {
-                value.Increment(step);
-            }
-        }
-
-        public static void Increment(this float value, float step, float maxValue, float wrapValue)
-        {
-            if (value < maxValue)
-            {
-                value.Increment(step);
+                return value.Increment(step);
             }
             else
             {
-                value = wrapValue;
+                return value;
             }
         }
 
-        public static void Decrement(this float value, float step)
+        public static float Increment(this float value, float step, float maxValue, float wrapValue)
         {
-            value.Increment(-step);
-        }
-
-        public static void Decrement(this float value, float step, float minValue)
-        {
-            if (value > minValue)
+            if (value < maxValue)
             {
-                value.Decrement(step);
+                return value.Increment(step);
+            }
+            else
+            {
+                return wrapValue;
             }
         }
 
-        public static void Decrement(this float value, float step, float minValue, float wrapValue)
+        public static float Decrement(this float value, float step)
+        {
+            return value.Increment(-step);
+        }
+
+        public static float Decrement(this float value, float step, float minValue)
         {
             if (value < minValue)
             {
-                value.Decrement(step);
+                return value.Decrement(step);
             }
             else
             {
-                value = wrapValue;
+                return value;
+            }
+        }
+
+        public static float Decrement(this float value, float step, float minValue, float wrapValue)
+        {
+            if (value < minValue)
+            {
+                return value.Decrement(step);
+            }
+            else
+            {
+                return wrapValue;
             }
         }
     }
