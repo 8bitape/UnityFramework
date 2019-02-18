@@ -50,7 +50,7 @@
 
         public static float Decrement(this float value, float step, float minValue, float wrapValue)
         {
-            if (value < minValue)
+            if (value > minValue)
             {
                 return value.Decrement(step);
             }
