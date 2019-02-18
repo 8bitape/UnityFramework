@@ -18,16 +18,12 @@ public static class Validator
 
         var props = new List<PropertyInfo>();
 
-        if (cachedProps.ContainsKey(_object.GetType()))
-        {
-            cachedProps.TryGetValue(_object.GetType(), out props);
-        }
-        else
+        if (!cachedProps.TryGetValue(_object.GetType(), out props))
         {
             props = GetPropertiesWithValidationAttributes(_object);
 
             cachedProps.Add(_object.GetType(), props);
-        }            
+        }      
 
         foreach (var prop in props)
         {
