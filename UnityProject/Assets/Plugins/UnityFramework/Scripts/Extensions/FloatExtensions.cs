@@ -38,7 +38,7 @@
 
         public static float Decrement(this float value, float step, float minValue)
         {
-            if (value < minValue)
+            if (value > minValue)
             {
                 return value.Decrement(step);
             }
